@@ -17,3 +17,11 @@
 
 データの追加、更新、削除を行うときは「redirect_to」
 データの取得を行うときは「render」
+
+# 登録ボタンを押すとcreateアクションが呼び出される構造
+-  viewにmethod=postがある場合
+
+１. ユーザーからのアクションは全て、HTTPリクエストのGETメソッドかPOSTメソッドとしてWebサーバーに送られる。
+2. HTTPリクエストのPOSTメソッドで送ったデータはparamsに入る
+３. createアクションは、newのviewからPOSTされたフォームを読み込む
+4. new からcreateへ送られてきたフォームの内容は params[:task] に入る。
