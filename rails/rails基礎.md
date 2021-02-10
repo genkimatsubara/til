@@ -25,3 +25,6 @@
 2. HTTPリクエストのPOSTメソッドで送ったデータはparamsに入る
 ３. createアクションは、newのviewからPOSTされたフォームを読み込む
 4. new からcreateへ送られてきたフォームの内容は params[:task] に入る。
+
+# params
+- paramsとはユーザーから送られてきた値が入っているもの。これを使ってサーバーサイドでお仕事をする
