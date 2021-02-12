@@ -1,3 +1,19 @@
+# let
+- letの上書きを多用すると、Specのコード行数が大きくなったときに、どのletが最終的に使われているのかが分かりづらくなるという難点がある。適切なバランスで利用するように意識する。
+
+# Specが失敗したときの調査法
+- Specが失敗したときには、「失敗したSpecの場所」　と　「どのような理由で失敗したか」　が結果として表示される。
+- 「失敗したSpecの場所」 を知るには、以下の出力をみれば、問題のファイルと行を知ることができる。
+```
+# ./spec/system/tasks_spec.rb:20:in `block (4 levels) in <top (required)>'
+```
+- 「どのような理由で失敗したか」 を見るには、「Failure/Error」 の部分に着目する。
+```
+Failure/Error: visit login_path
+          Selenium::WebDriver::Error::WebDriverError:
+            unable to connect to chromedriver
+```
+
 # テスト実行時に起こったエラーの解決法
 
 ```
