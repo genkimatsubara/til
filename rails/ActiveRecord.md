@@ -10,9 +10,52 @@
 - データをデータベースで永続化する前にバリデーション（検証）を行う
 - データベースをオブジェクト指向スタイルで操作する
 
-
 # 命名ルール
 - モデルのクラス
 単数形、語頭を大文字にする
 - DBのテーブル
 複数形、語はアンダースコアで区切られる
+
+# スキーマのルール
+Active Recordでは、データベースのテーブルで使うカラム名についても利用目的に応じたルールがある。
+- 外部キー
+このカラムはテーブル名の`単数形_id`にする必要があります。ActiveRecordがモデル間の関連付けを作成するときに参照されます。
+- 主キー
+デフォルトではidという名前のintegerカラムがテーブルの主キーに使われる。ActiveRcordマイグレーションでテーブルを作成するとこのカラムが自動的に作成される。
+
+# ActiveRecordの検索メソッドについて
+##  createとnewの違い
+- create
+```
+user = User.create(name: "David", occupation: "Cord Artist")
+```
+`create`を実行すると新しいオブジェクトが返され、さらにデータベースに保存される。
+- new
+```
+user = User.new
+user.name = "David"
+user.occupation = "Cord Artist"
+```
+`newメソッド`でインスタンスを作成する場合、オブジェクトは保存されない。`user.save`を実行して初めて、データベースにレコードがコミットされる。
+## findメソッド
+```
+david = User.find(name: "David")
+```
+- `findメソッド`はidしか引数として受け付けず、id以外のものはエラーになる。
+## destoryメソッド
+- 全てのデータを削除する
+```
+User.destory_all
+```
+destory_allは全てのデータを削除するときに使う
+- 一つのデータを削除する
+```
+user = User.find_by(name: "David")
+user.destory
+```
+destoryはデータを一つ削除するときに使う。（先にオブジェクトを取得しなければ使えない）複数削除することも可
+- Davidという名前のユーザーを検索して全て削除する
+```
+User.destroy_by(name: "David")
+User.destroy_all
+```
