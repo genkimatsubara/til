@@ -59,3 +59,5 @@ destoryはデータを一つ削除するときに使う。（先にオブジェ�
 User.destroy_by(name: "David")
 User.destroy_all
 ```
+## update,save
+- update,saveメソッドは、バリデーションに失敗するとfalseを返す。このとき実際にデータベース操作は行われない。しかし、このメソッドにはそれぞれ破壊的なバージョン(save!,update!)があり、こちらは、検証に失敗した場合にさらに厳しい対応、つまり`ActiveRecord:RecordInvalid`が発生する。
