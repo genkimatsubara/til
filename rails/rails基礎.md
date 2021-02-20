@@ -14,9 +14,20 @@
 # render redirect_to
 - render 表示させるViewファイルを指定("フォルダ名/Viewファイル名")
 - redirect_to URL(HTTPリクエストメソッド）を指定("/URL/~/~/")
-
 データの追加、更新、削除を行うときは「redirect_to」
 データの取得を行うときは「render」
+
+## redirect_to @userの意味
+```
+def create
+   @user = User.new(user_params)
+   if @user.save
+      redirect_to @user
+   else
+      render :new
+```
+- `redirect_to @user`は`redirect_to user_url(user.id)`と同じ意味を持つ
+- なので、セーブが成功した場合indexアクションにリダイレクトされるのではなく、showアクションにリダイレクトされる。
 
 # 登録ボタンを押すとcreateアクションが呼び出される構造
 -  viewにmethod=postがある場合
