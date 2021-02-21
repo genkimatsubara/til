@@ -25,3 +25,13 @@
 # resources
 - Railsでは、一覧、詳細、登録、更新、削除というよくある機能群を提供するために必要となるルート一式を、resourcesというメソッドを使って定義することはできます。resourcesを使うと、アクションごとにgetメソッドやpostメソッドを使ってルートを定義する代わりに、一発で７つのアクションに対応する７つのルートを定義できる。
 - resourcesはあくまでも典型的なCRUDを簡単に定義するだけの仕組みに過ぎず、何もかもをresourcesを使って定義しなければならないわけではない。
+
+# resources :usersのルート
+## HTTP動詞　　パス　　アクション　　目的
+- `GET  /users  users#index  全てのユーザーの一覧を表示`
+- `GET  /users/new  users#new  ユーザーを一つ作成するためのHTMLフォームを返す`
+- `POST /users  users#create  ユーザーを一つ作成する`
+- `GET  /users/:id  users#show  特定のユーザーを表示`
+- `GET  /users/:id/edit  users#edit  ユーザー編集用のHTMLフォームを一つ返す`
+- `PATCH PUT  /users/:id  users#update  特定のユーザーを更新する`
+- `DELETE  /users/:id  users#destroy  特定のユーザーを削除する`
