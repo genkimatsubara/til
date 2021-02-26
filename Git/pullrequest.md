@@ -32,3 +32,7 @@ masterブランチに戻る
 ```
 git pull origin master
 ```
+使わないブランチは削除する
+```
+git branch -d 〇〇
+```
