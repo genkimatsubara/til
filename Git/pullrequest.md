@@ -21,3 +21,14 @@ git commit -m 'メッセージ'
 git push origin <新しいブランチ名>
 ```
 - プルリクエストを行う
+- レビューをしてもらう
+- OKならマージをする
+- githubのmasterブランチの状態を自分のワークツリーにも取り入れる
+```
+git checkout master
+```
+masterブランチに戻る
+- masterブランチの内容を取り込む
+```
+git pull origin master
+```
