@@ -20,8 +20,8 @@ cat ~/ .gitconfig
 ```
 # コマンドにエイリアスをつける
 - コマンド入力が楽になる
-例）
 ```
+例）
 git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.br branch
