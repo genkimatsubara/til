@@ -36,3 +36,4 @@ git pull origin master
 ```
 git branch -d 〇〇
 ```
+# プルリク用のディレクトリを削除してしまったとき、あげたプルリクを編集する方法
