@@ -26,3 +26,18 @@
 ### 「ユーザーがツイートしたデータ」や「このツイートをしたユーザー」などの表示方法
 - ユーザーがツイートしたデータは、`@user.tweets`これで「ユーザーに関連したツイート」を取得できる。tweetsと複数形になっていることに注意。この記述は、Userモデルに記述した`has_many　:tweets`によって決まる。
 - このツイートをしたユーザーは、`@tweet.user`これで「このツイートをしたユーザー」を取得できる。Tweetモデルに記述した`belongs_to :user`により、単数形にすることで取得する。（こちらは、単数なので取得したデータも１つのみ）
+
+## 投稿した記事にユーザーIDを保存できるようにする
+- これをしないと誰がどの記事を投稿したのか判別できない。
+- 最初は以下のようにやってしまいエラーが発生した
+```
+def create
+  @question = Question.new(question_params,user_id: @current_user.id)
+```
+- ユーザーIDを保存するには、`pravate`の`question_params`で直接`user_id`を受け取れるようにすれば良い
+```
+def question_params
+  params.require(:question).permit(:title, :body, :user_id)
+end
+```
+これにより投稿したユーザーのIDを保存することができる。
