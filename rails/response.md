@@ -75,6 +75,7 @@ end
  end
 
 ```
+- リクエストボディの「入力されたタスク名」がRailsによりparamsオブジェクトの中にハッシュのような構造で入る
 - task_params<br>
 `require(:task)`は生成されたHTMLの`name="task[name]"`の`task`と関連している。<br>
 `permit(:name)`で指定したカラムのみ取得する。
