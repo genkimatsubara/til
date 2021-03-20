@@ -55,3 +55,5 @@ end
          </div>
          <input type="submit" name="commit" value="登録" class="btn btn-primary" data-disable-with="登録"></form>
 ```
+### 作成ボタンを押す
+- form_withで生成されるmethod: postによって、フォーム内容を送信するときにPOSTメソッドが発生し、ルーティングでPOSTリクエストに対応する/tasksを受け取り、createアクションが実行
