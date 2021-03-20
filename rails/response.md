@@ -57,3 +57,37 @@ end
 ```
 ### 作成ボタンを押す
 - form_withで生成されるmethod: postによって、フォーム内容を送信するときにPOSTメソッド指定され、`routes.rb`の`resources :tasks`でPOSTリクエストに対応する/tasksを受け取り、createアクションが実行される
+```
+ def create
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to @task
+    else
+      render :new
+    end
+ end
+ 
+ 
+ private
+ 
+ def task_params
+   params.require(:task).permit(:name)
+ end
+
+```
+- task_params<br>
+`require(:task)`は生成されたHTMLの`name="task[name]"`の`task`と関連している。<br>
+`permit(:name)`で指定したカラムのみ取得する。
+
+
+
+
+### タスク詳細ページに遷移する
+- データベースへの保存が成功した場合、リダイレクト先を@taskとすることで詳細ページに遷移する。redirect_to @taskはredirect_to task_url(task.id)と同じ意味を持つ
+
+![代替テキスト](https://i.gyazo.com/4d39488e599c1751e722b29594b62144.jpg)
+
+![代替テキスト](https://i.gyazo.com/25d4ac64cf21ac57515d06df90d2afc3.png)
+
+
+![代替テキスト](https://i.gyazo.com/98ab7600e6ff9bdd0e54e71de51a9e72.png)
