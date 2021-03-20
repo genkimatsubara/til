@@ -33,11 +33,33 @@
 ```
 def create
   @question = Question.new(question_params,user_id: @current_user.id)
+end
 ```
-- ユーザーIDを保存するには、`pravate`の`question_params`で直接`user_id`を受け取れるようにすれば良い
+- ユーザーIDを保存するには、`pravate`の`question_params`に`merge`で`user_id`を受け取れるようにすれば良い
 ```
+def create
+  @question = Question.new(question_params)
+end
+
 def question_params
-  params.require(:question).permit(:title, :body, :user_id)
+  params.require(:question).permit(:title, :body).merge(user_id: current_user.id)
 end
 ```
 これにより投稿したユーザーのIDを保存することができる。
+
+## 上記と動作は同じだが以下のような書き方の方が推奨されている
+```
+def create
+    @question = current_user.questions.new(question_params)
+    if @question.save
+      redirect_to questions_url, notice: "質問を「#{@question.title}」投稿しました。"
+    else
+      render :new
+    end
+  end
+private
+  def question_params
+    params.require(:question).permit(:title, :body)
+  end
+  
+```
