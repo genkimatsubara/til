@@ -1,11 +1,19 @@
  # cloud9でrails開発環境作り
- - sudo yum update 管理者権限でアップデート
- - rvm install 2.5.1 cloud9にあるrvmを使ってRubyのバージョンを指定
- - rvm --default use 2.5.1 デフォルトにする
- - gem update --system gemをアップデートする
- - gem install bundler Bundlerをインストール
- - gem install rails -v 5.2.1 railsのインストール　「-v」でバージョン指定
- - brew install node Node.jsのインストール
+ - `sudo yum update` 管理者権限でアップデート
+ - `rvm install 2.5.1` cloud9にあるrvmを使ってRubyのバージョンを指定
+ - `rvm --default use 2.5.1` デフォルトにする
+ - `gem update --system` gemをアップデートする
+ - `gem install bundler` Bundlerをインストール
+ - `gem install rails -v 5.2.1` railsのインストール　「-v」でバージョン指定
+ - #brew install node Node.jsのインストール
+
+# アプリケーション作成の準備
+- `rails new アプリケーション名[オプション]` アプリケーションの雛形を作成
+- `cd アプリケーション名` ディレクトリに移動
+- `rails db:create` データベースを作成
+- `gem slim-rails``gem html2slim`を`bundle` slimを使えるようにする
+- `bundle exec erb2slim qpp/views/layouts/ --delete` slimに変更する
+- `gem bootstrap`を`bundle` bootstrapを導入
 
 # テンプレートエンジン
 - ERB Railsのデフォルトで、HTMLに近い形をしているので、HTMLを知っていれば比較的簡単に理解することができる
