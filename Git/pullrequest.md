@@ -37,3 +37,20 @@ git pull origin master
 git branch -d 〇〇
 ```
 # プルリク用のディレクトリを削除してしまったとき、あげたプルリクを編集する方法
+```
+% git fetch
+% git branch -a
+* main
+ remotes/origin/HEAD -> origin/main
+ remotes/origin/main
+ remotes/origin/output
+ remotes/origin/pull
+ remotes/origin/pullreq
+ remotes/origin/rails_output
+% git checkout pull
+Branch 'pull' set up to track remote branch 'pull' from 'origin'.
+Switched to a new branch 'pull'
+% git branch
+ main
+* pull
+```
