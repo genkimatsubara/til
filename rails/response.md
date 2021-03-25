@@ -36,7 +36,7 @@ def new
 end
 ```
 ### タスク名（name）を入力する
-- 入力フォームを生成するためnewアクションに紐づくnew.heml.slimを編集する
+- 入力フォームのHTMLを生成するためnewアクションに紐づくnew.heml.slimを編集する
  ```
 = form_with model: @task, local: true do |f|
   .form-group
