@@ -12,7 +12,7 @@ end
 （この記述だけでデータベースからデータを取得できる理由は、RailsにはモデルにActiveRecordが継承されているので、Rubyを用いてDBからデータを探したり、持ってくることができる。）
 - indexアクションに紐づくindex.html.erbを編集する<br>
 
-@users.eachでuserオブジェクト一つずつ取り出すためのHTMLが組み立てられる。
+@users.eachでuserオブジェクトが一つずつ取り出され、情報がHTMLタグに動的に入り、HTMLが組み立てられる。
 
 ```
 <% @users.each do |user| %>
@@ -60,7 +60,7 @@ end
          <input type="submit" name="commit" value="登録" class="btn btn-primary" data-disable-with="登録"></form>
 ```
 ### 作成ボタンを押す
-- form_withで生成されるmethod: postによって、フォーム内容を送信するときにPOSTメソッド指定され、`routes.rb`の`resources :tasks`でPOSTリクエストに対応する/tasksを受け取り、createアクションが実行される
+- form_withで生成されるmethod: postによって、フォーム内容を送信するときにPOSTメソッド指定され、`routes.rb`の`resources :tasks`で/tasksにPOSTリクエストが送られた場合は、tasks_controllerのcreateアクションが実行される
 - task_paramsで取得したデータをTask.newの引数にしてインスタンスを作成
 
 ```
