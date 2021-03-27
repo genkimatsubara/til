@@ -12,7 +12,7 @@ end
 ```
 （この記述だけでデータベースからデータを取得できる理由は、RailsにはモデルにActiveRecordが継承されているので、Rubyを用いてDBからデータを探したり、持ってくることができる。）
 - indexアクションに紐づくindex.html.erbを編集する<br>
-@users.eachでuserオブジェクト一つずつ取り出され、情報がHTMLタグに動的に入り、HTMLが組み立てられる。
+@users.eachでuserオブジェクトが一つずつ取り出され、情報がHTMLタグに動的に入り、HTMLが組み立てられる。
 ```
 <% @users.each do |user| %>
     <li>
