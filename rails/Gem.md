@@ -24,5 +24,23 @@ def index
 `◯◯_cont`○◯の部分には自分で作ったカラム名を指定する。
 
 ### adminで検索フォームを作成する場合
+```
+= search_form_for [:admin, @q], class: 'my-5' do |f| 
+  .form-group.row
+    .col-sm-10
+      = f.search_field :name_cont, class: 'form-control', placeholder: '検索ワード'
+    .col-sm-2
+      = f.submit class: ' btn btn-outline-primary'
+```
+`[:admin, @q]`とすることでusers_pathに遷移するのを防ぐことができる。
 
 # kaminari
+### ページネーション機能を実装
+```
+def index
+  @q = User.ransack(params[:q])
+  @users = @q.result(distinct: true).page(params[:page]).per(10)
+end
+```
+`page`と`per`はkaminariで定義されたメソッド<br>
+`per`メソッドの引数にどれだけのレコードが表示されたらページを増やすのかを指定することができる
