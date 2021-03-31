@@ -37,15 +37,6 @@ def create
 - `redirect_to @user`は`redirect_to user_url(user.id)`と同じ意味を持つ
 - なので、セーブが成功した場合indexアクションにリダイレクトされるのではなく、showアクションにリダイレクトされる。
 
-# 登録ボタンを押すとcreateアクションが呼び出される構造
--  viewにmethod=postがある場合
 
-１. ユーザーからのアクションは全て、HTTPリクエストのGETメソッドかPOSTメソッドとしてWebサーバーに送られる。
-2. HTTPリクエストのPOSTメソッドで送ったデータはparamsに入る
-３. createアクションは、newのviewからPOSTされたフォームを読み込む
-4. new からcreateへ送られてきたフォームの内容は params[:task] に入る。
-
-# params
-- paramsとはユーザーから送られてきた値が入っているもの。これを使ってサーバーサイドでお仕事をする
 
 
