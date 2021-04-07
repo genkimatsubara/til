@@ -34,3 +34,10 @@ end
 `sort`配列の中にハッシュを格納した状態で表示される。<br>
 `sort.to_h`ソートしたらハッシュに戻す。<br>
 `sort_by {|k, v| v }.to_h`値でソートしてハッシュに戻す。
+
+# ハッシュにシンボルを使う
+```
+enemies = {zako: "スライム", boss: "ドラゴン", king: "魔王"}
+p enemies
+p enemies[:boss]
+```
