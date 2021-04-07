@@ -30,3 +30,7 @@ enemies.each do |rank, enemy|
 	puts "#{rank}の#{enemy}が、現れた！"
 end
 ```
+# ハッシュの整列
+`sort`配列の中にハッシュを格納した状態で表示される。<br>
+`sort.to_h`ソートしたらハッシュに戻す。<br>
+`sort_by {|k, v| v }.to_h`値でソートしてハッシュに戻す。
