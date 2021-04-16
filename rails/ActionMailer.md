@@ -8,8 +8,7 @@
 (cloud9でmailcatcherを実行しようとしたら、うまく実行出来ず原因はcloud9ではないかと考えられる。<br>
 なので、メール確認のために代わりにletter_opener_webならcloud9でも使用することが出来た。)
 
-## 全ユーザーにメールを送信する
-例） 新規質問がされたら全ユーザーにメールが送信される
+## 質問があった際に全員に対して質問があった旨をメールで通知する
 ```
 # question_mailer.rb
 class QuestionMailer < ApplicationMailer
