@@ -37,7 +37,7 @@ end
     end
   end
 ```
-### これでも、全ユーザーにメールを送信することは可能だが、考え方が少し複雑な上にメイラーのビューで質問のタイトルや内容を表示するために@question使えない。<br>
+- これでも、全ユーザーにメールを送信することは可能だが、考え方が少し複雑な上にメイラーのビューで質問のタイトルや内容を表示するために@question使えない。<br>
 ```
 # quesitons_controller
 def create
@@ -57,4 +57,50 @@ def creation_email
     mail(subject: '新規質問',to: @user.email, from: "qanda@example.com")
   end
 ```
-### このように`with(question: @question)`と書くことでメイラーのアクションで`params[:question]`が使えるようになり、ビューでも@questionが使えるのでメールの内容を表示することができるようになる。
+- このように`with(question: @question)`と書くことでメイラーのアクションで`params[:question]`が使えるようになり、ビューでも@questionが使えるのでメールの内容を表示することができるようになる。
+
+## 質問に対して回答があった場合は質問者および当該質問に回答したユーザーに対してメールで通知する。
+### 質問者にメール
+```
+# answers_controller.rb
+def create
+    @answer = current_user.answers.new(answer_params)
+    if @answer.save
+      AnswerMailer.with(answer: @answer).creation_answer.deliver_later #回答があった場合質問者にメールで通知
+      redirect_to "/questions/#{params[:question_id]}",  notice: "回答しました"
+    else
+      @question = Question.find(params[:question_id])
+      render "questions/show"
+    end
+  end
+```
+```
+# answer_mailer.rb
+def creation_answer
+    @answer = params[:answer]
+    mail(subject: '回答',to: @answer.question.user.email, from: "qanda@example.com")
+  end
+```
+@answerで回答した内容を取得<br>
+メールの送信先を@answer紐付いたquestionからuserのeamilを取得している
+
+### 当該質問に回答したユーザーに対してメール
+
+```
+# answers_controller.rb
+Question.find(params[:question_id]).answers.each do |user| # 質問に紐付いた回答一覧をeachで回す
+        AnswerMailer.with(user: user, answer: @answer).creation_other_answers.deliver_later
+end
+```
+- `with(user: user, answer: @answer)`でユーザーだけを繰り返して,回答された内容は固定したまま(@answer)にする
+```
+# answer_mailer.rb
+def creation_other_answers
+    @user = params[:user]
+    @answer = params[:answer]
+    mail(subject: '他の回答',to: @user.user.email, from: "qanda@example.com")
+end
+```
+### ここで発生した問題
+最初、メールの送信先を`@user.email`にしていたので、このままではeachで繰り返されたuser.idが入ってしまうのでメールアドレスではないのでメールが送信されない。<br>
+解決するのはuser.idからメールアドレスを取得しなければならない。`@user.user.email`とすることでuser.idからメールアドレスを取得することができる。
