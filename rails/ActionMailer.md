@@ -7,6 +7,26 @@
 `http://localhost:3000/letter_opener`にアクセスすることで送信されたメールを確認できる<br>
 (cloud9でmailcatcherを実行しようとしたら、うまく実行出来ず原因はcloud9ではないかと考えられる。<br>
 なので、メール確認のために代わりにletter_opener_webならcloud9でも使用することが出来た。)
+### cloud9で使う方法
+1. gemを追加
+```
+group :development do
+  gem 'letter_opener_web'
+end
+```
+2. ルーティング
+```
+mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+```
+3. config デフォルトURLを指定(cloud9バージョン)
+```
+# config/environments/development.rb
+
+config.action_mailer.default_url_options = { host: 'myapp.c9users.io/', port: $PORT, protocol: 'https'  }
+config.action_mailer.delivery_method = :letter_opener_web
+```
+
+
 
 ## 質問があった際に全員に対して質問があった旨をメールで通知する
 ```
