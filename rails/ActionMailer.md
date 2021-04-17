@@ -122,7 +122,11 @@ def creation_answer
 
 ```
 # answers_controller.rb
-Question.find(params[:question_id]).answers.each do |user| # 質問に紐付いた回答一覧をeachで回す
+      answers = Answer.where(question_id: @answer.question_id)
+      user_ids = answers.pluck(:user_id)
+      users = User.where(id: user_ids)
+      users.each do |user|
+      users.each do |user|
         AnswerMailer.with(user: user, answer: @answer).creation_other_answers.deliver_later
 end
 ```
