@@ -1,5 +1,19 @@
-# ActionMeiler
+# Action Meiler
+Action Mailerを使うと、アプリケーションのメイラークラスやビューでメールを送信することができる。メイラーの動作はコントローラときわめて似通っている。メイラーはActionMailer::Baseを継承し、app/mailersに配置され、app/viewsにあるビューと結び付けられる。
+### Mailer作成手順
+1. メイラーを作成
+```
+rails g mailer UserMailer
+```
+```
+# app/mailers/application_mailer.rb
+class ApplicationMailer < ActionMailer::Base
+  default from: "from@example.com"
+  layout 'mailer'
+end
+```
 
+# メール送信確認方法
 ## mailcatcher
 シンプルなsmtpサーバを立てて、送信されたメールをブラウザ上で確認できるようにしてくれる。
 ## letter_opener_web
