@@ -42,7 +42,7 @@ config.action_mailer.delivery_method = :letter_opener_web
 
 
 
-## 質問があった際に全員に対して質問があった旨をメールで通知する
+## 質問があった際に全員に対して質問があった旨をメールで通知する(自分は除く)
 ```
 # question_mailer.rb
 class QuestionMailer < ApplicationMailer
@@ -78,6 +78,7 @@ def create
     @question = current_user.questions.new(question_params)
     if @question.save
       User.all.each do |user|
+        next if == current_user
         QuestionMailer.with(user: user, question: @question).creation_email.deliver_now
       end
       redirect_to questions_url, notice: "質問を「#{@question.title}」投稿しました。"
@@ -118,7 +119,7 @@ def creation_answer
 @answerで回答した内容を取得<br>
 メールの送信先を@answer紐付いたquestionからuserのeamilを取得している
 
-### 当該質問に回答したユーザーに対してメール
+### 当該質問に回答したユーザーに対してメール(自分は除く)
 
 ```
 # answers_controller.rb
@@ -127,6 +128,7 @@ def creation_answer
       users = User.where(id: user_ids)
       users.each do |user|
       users.each do |user|
+        next if == current_user
         AnswerMailer.with(user: user, answer: @answer).creation_other_answers.deliver_later
 end
 ```
