@@ -11,7 +11,7 @@
 - `rails new アプリケーション名[オプション]` アプリケーションの雛形を作成
 - `cd アプリケーション名` ディレクトリに移動
 - `rails db:create` データベースを作成
-- `gem slim-rails``gem html2slim`を`bundle` slimを使えるようにする
+- `gem slim-rails` `gem html2slim`を`bundle` slimを使えるようにする
 - `bundle exec erb2slim app/views/layouts/ --delete` slimに変更する
 - `gem bootstrap`を`bundle` bootstrapを導入
 
