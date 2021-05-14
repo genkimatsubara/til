@@ -20,3 +20,23 @@
 | （管理画面）質問を削除する | DELETE | /admin/questions/:id | admin/questions#destroy |
 | （管理画面）ユーザー一覧を表示する | GET | /admin/users | admin/users#index |
 | （管理画面）ユーザーを削除する | DELETE | /admin/users/:id | admin/users#destroy |
+
+
+| やりたいこと | HTTPメソッド | エンドポイント | コントローラ#アクション |
+| :--- | :--- | :--- | :--- |
+| ユーザー登録画面を表示 | GET | /users/new | users#new |
+| ユーザー登録をする | POST | /users | users#create |
+| ユーザー一覧を表示する | GET | /users | users#index |
+| ログイン画面を表示する | GET | /login | session#new |
+| ログイン | POST | /login | session#create |
+| 商品一覧を表示する | GET | /products | products#index |
+| 商品登録ページを表示する | GET | /products/new | products#new |
+| 商品を登録する | POST | /products | products#create |
+| 商品編集ページを表示する | GET | /products/:id/edit | products#edit |
+| 質問を更新する | PATCH | /products/:id | products# |
+| 質問を削除する | DELETE | /products/:id | products#destroy |
+| 管理画面用のログインページを表示する | GET | /admin/login | admin/session#new|
+| （管理画面）質問一覧ページを表示する | GET | /admin/questions | admin/questions#index |
+| （管理画面）質問を削除する | DELETE | /admin/questions/:id | admin/questions#destroy |
+| （管理画面）ユーザー一覧を表示する | GET | /admin/users | admin/users#index |
+| （管理画面）ユーザーを削除する | DELETE | /admin/users/:id | admin/users#destroy |
