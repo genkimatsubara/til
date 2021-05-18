@@ -37,6 +37,28 @@ def create
 - `redirect_to @user`は`redirect_to user_url(user.id)`と同じ意味を持つ
 - なので、セーブが成功した場合indexアクションにリダイレクトされるのではなく、showアクションにリダイレクトされる。
 
+# Rubyのバージョンアップ
+```
+rvm install インストールしたいバージョン
+```
+
+```
+rvm list
+```
+```
+rvm --default use インストールしたバージョンをデフォルトにする
+```
+
+```
+gem install bundler
+```
+
+
+```
+bundle update
+```
+gemファイルでRubyのバージョンを書き換える
+
 
 
 
