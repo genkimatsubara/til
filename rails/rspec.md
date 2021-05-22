@@ -64,3 +64,7 @@ NameError:
 
 ### FactoryBot.buildを使うと新しいテストオブジェクトをメモリ内に保存する 
 ### FactoryBot.createを使うとアプリケーションのテスト用データベースにオブジェクトを永続化する
+可能な限りFactoryBot.createよりもFactoryBot.buildを使う。こうすればテストデータベースにデータを追加する回数が減るので、パフォーマンス面のコストを削減できる。
+
+# コントローラスペック
+
