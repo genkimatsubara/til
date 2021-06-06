@@ -58,8 +58,3 @@ gem install bundler
 bundle update
 ```
 gemファイルでRubyのバージョンを書き換える
-
-
-
-# Macでの開発環境
-# ローカルにRubyのインストールしたいバージョンがないとき
