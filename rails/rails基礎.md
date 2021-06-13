@@ -58,3 +58,6 @@ gem install bundler
 bundle update
 ```
 gemファイルでRubyのバージョンを書き換える
+
+
+### データベースを変更する
