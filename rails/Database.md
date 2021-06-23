@@ -1,6 +1,7 @@
 # postgresql mysql 違い
 
 # データベースをSQLiteからPostgresqlに変更する
+※業務では、SQLiteは使うとことないので、基本最初からPostgresqlかMySQLを使う<br>
 - railsは`Gemfile`と`database.yml`を書き換えればデータベースの変更を簡単にすることができる
 ```
 # Gemfile
