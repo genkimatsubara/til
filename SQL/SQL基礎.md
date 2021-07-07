@@ -73,3 +73,6 @@ MIN（カラム名）
 ```
 GROUP BY カラム名
 ```
+
+### GRUOP BYとWHERE
+`GRUOP BY`は`WHERE`とも併用することができ、その場合は`WHERE`を後に書く
