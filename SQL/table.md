@@ -15,6 +15,8 @@ create table テーブル名
 ### データ型変更
 `alter table テーブル名 modify column テーブル名 新しいデータ型;`
 `modify`を使うとカラムの位置を変更することができる。
+### NULLを入れないようにする
+`alter table テーブル名 modify カラム名 データ型 not null;`
 ### 絡むの削除
 `alter table テーブル名 drop column 削除したいカラム名;`
 
