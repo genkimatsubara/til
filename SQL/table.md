@@ -20,6 +20,21 @@ create table テーブル名
 ### 絡むの削除
 `alter table テーブル名 drop column 削除したいカラム名;`
 
+### 主キーとオートインクリメントの設定
+主キー
+`alter table テーブル名 modify カラム名 int primary key;`
+オートインクリメント
+`alter table テーブル名 modify カラム名 int auto_increment;`
+
+## テーブル作成時に主キーとオートインクリメントを設定する
+```
+create table テーブル名(
+   ID int primary key auto_increment,
+   〇〇 text,
+   〇〇 date
+   );
+```
+
 # テーブルの紐付け
 テーブルを紐づけるためには、外部キーと主キーを使う。<br>
 外部キーで他のテーブルにある主キーを指定することで、テーブル同士を紐づけることができる。
