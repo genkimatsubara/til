@@ -22,7 +22,7 @@ create table テーブル名
 
 ### 主キーとオートインクリメントの設定
 主キー
-`alter table テーブル名 modify カラム名 int primary key;`
+`alter table テーブル名 modify カラム名 int primary key;`<br>
 オートインクリメント
 `alter table テーブル名 modify カラム名 int auto_increment;`
 
