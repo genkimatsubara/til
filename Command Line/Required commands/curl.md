@@ -15,17 +15,23 @@ curl [オプション] <URL>
 | -o | ファイルの保存 | 
 | -u | 認証情報の付与 | 
 | -o | 出力ファイルの保存 | 
-|  |  | 
-|  |  | 
-|  |  |   
-|  |  | 
+
   
+# 動作確認(rails scaffoldで作成したものを使用)
 
-# curlコマンドで（GET,POST,PATCH,DELETE）の動作確認
-(rails scaffoldで作成したものを使用)
+## ファイルに保存
+```
+matsubaragenki@matsubaragenmarenoMacBook-Air ~ % curl http://localhost:3000/articles -o index.html
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2146    0  2146    0     0  39740      0 --:--:-- --:--:-- --:--:-- 40490
+```
+
+## curlコマンドで（GET,POST,PATCH,DELETE）の動作確認
 
 
-## GET(記事一覧取得)
+
+### GET(記事一覧取得)
 ```
 matsubaragenki@matsubaragenmarenoMacBook-Air ~ % curl http://localhost:3000/articles
 <!DOCTYPE html>
@@ -76,7 +82,7 @@ matsubaragenki@matsubaragenmarenoMacBook-Air ~ % curl http://localhost:3000/arti
 [![Image from Gyazo](https://i.gyazo.com/ce7cd908a449db2d2f25045c884a8768.png)](https://gyazo.com/ce7cd908a449db2d2f25045c884a8768)
 
   
-## POST(記事新規作成）
+### POST(記事新規作成）
 ```
 matsubaragenki@matsubaragenmarenoMacBook-Air ~ % curl -X POST -F "article[title]=greeting" -F "article[content]=hello world" http://localhost:3000/articles
 <html><body>You are being <a href="http://localhost:3000/articles/2">redirected</a>.</body></html>%   
@@ -84,16 +90,22 @@ matsubaragenki@matsubaragenmarenoMacBook-Air ~ % curl -X POST -F "article[title]
 [![Image from Gyazo](https://i.gyazo.com/481ab28c6cf7d1be2630fac1c58c8c8e.png)](https://gyazo.com/481ab28c6cf7d1be2630fac1c58c8c8e)
 
   
-## PATCH(特定の記事を更新)
+### PATCH(特定の記事を更新)
 ```
 matsubaragenki@matsubaragenmarenoMacBook-Air ~ % curl -X PATCH -F "article[title]=greeting update" -F "article[content]=hello world update" http://localhost:3000/articles/2
 <html><body>You are being <a href="http://localhost:3000/articles/2">redirected</a>.</body></html>%  
 ```
 [![Image from Gyazo](https://i.gyazo.com/eb7154ccca189d91c3050f8b3cfe1bec.png)](https://gyazo.com/eb7154ccca189d91c3050f8b3cfe1bec)
   
-## DELETE(特定の記事を削除)
+### DELETE(特定の記事を削除)
 ```
 matsubaragenki@matsubaragenmarenoMacBook-Air ~ % curl -X DELETE http://localhost:3000/articles/2
 <html><body>You are being <a href="http://localhost:3000/articles">redirected</a>.</body></html>% 
 ```
 [![Image from Gyazo](https://i.gyazo.com/d5ea10b6d0978c7774fa28b5719ab405.png)](https://gyazo.com/d5ea10b6d0978c7774fa28b5719ab405)
+
+
+
+# 使えそうな場面
+- APIを叩く
+- ファイルをダウンロードする
