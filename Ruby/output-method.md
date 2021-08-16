@@ -27,23 +27,4 @@
 - デバック用
 
 
-print "Hello"
-print "World\n"
 
-puts "Hello"
-puts "World\n"
-
-p "Hello"
-p "World\n"
-
-array = ["red", "blue", "green"]
-
-print array
-puts array
-p array
-
-hash = {"name" => "松原", "age" => 21}
-
-print hash
-puts hash
-p hash
