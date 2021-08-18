@@ -32,3 +32,40 @@ String#clear
 Hash#replace
 Hash#shift
 ```
+
+
+# 破壊的メソッド
+a = 'ruby'
+
+a.upcase
+p a
+
+a.upcase!
+p a
+
+# オブジェクトの働き
+b = 'HELLO'
+
+c = b.downcase
+p b.object_id
+p c.object_id
+
+c = b.downcase!
+p b.object_id
+p b.object_id
+
+# 「!」がつかない破壊的メソッド
+s = '明日の天気は'
+p s
+s.concat('雨です')
+p s
+
+array = ['red', 'blue', 'green']
+p array
+array.shift
+p array
+
+hash = {red:'赤', blue:'青', green:'緑'}
+p hash
+hash.delete(:red)
+p hash
