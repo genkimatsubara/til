@@ -21,15 +21,8 @@ Array.new()
 ```
 引数に整数を渡すと、その個数分の要素が追加される。初期値はnil
 
-# 要素の取得
+### `to_a`メソッドを用いて生成
 ```
-# 配列の定義
-colors = ['red', 'blue', 'green']
-
-# 要素の取得
-p colors[0] # =>"red"
-p colors[1] # =>"blue"
-p colors[2] # =>"green"
-# 配列がない場合はnil
-p colors[10] # =>nil
+(1..5).to_a
+# => [1, 2, 3, 4, 5]
 ```
