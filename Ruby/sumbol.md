@@ -27,3 +27,46 @@
 ## シンボル利用例
 - ハッシュのキーにシンボルを使うと、文字列よりも高速に値を取り出すことができる。
 - 他にもオブジェクトが持っているメソッド名がシンボルで管理されている。
+
+```
+# 文字列とシンボルの違い
+p 'hello'.class
+p :hello.class
+
+p 'hello'.object_id
+p 'hello'.object_id
+
+p :hello.object_id
+p :hello.object_id
+
+# 比較
+p 'hello' == 'hello'
+p :hello == :hello
+
+# ハッシュのキー
+scores = { abe: 60, ito: 70, tanaka: 80, hamada: 90 }
+
+# シンボルを使って取り出す
+p scores[:ito]
+
+class User
+
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def sayHi
+    puts "hi! i am #{@name}"
+  end
+
+end
+
+tom = User.new("tom")
+
+tom.name = "tom Jr."
+p tom.name
+
+tom.sayHi # レシーバー
+```
