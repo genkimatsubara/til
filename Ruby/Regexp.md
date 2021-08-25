@@ -25,3 +25,36 @@ Regexp.new('hello')
 | source | その正規表現のもととなった文字列表現を生成して返す。 |
 | to_s | 正規表現の文字列表現を生成して返す。 |
 | ~ | 変数 $_ の値との間でのマッチをとる。 |
+
+
+
+```
+# オブジェクトの作成
+regexp = Regexp.new('hello')
+p regexp
+p regexp.class
+
+# 文字列が含まれているか
+if "aabbcc" =~ /ab+c/
+  puts "マッチしました"
+else
+  puts "マッチしませんでした"
+end
+
+today = "今日は2021/08/24です"
+p today.match(/\d{4}\/\d{2}\/\d{2}/)
+
+job = "今日は休み、明日は仕事、明後日は休み"
+p string.match(/.*休み/)
+
+# 文字列を置き換える
+job = "今日は休み、明日は仕事"
+puts string.gsub(/仕事/, "休み")
+
+# 大文字小文字を区別しない
+greeting = /hello/i
+if "HELLO WORLD" =~ greeting
+  puts "一致しました"
+end
+
+```
