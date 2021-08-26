@@ -16,12 +16,12 @@ attr_accessor # access (読むと書くの両方)
 ```
 # クラスを定義
 class Shoes
-	# 読み書き両方
+  # 読み書き両方
   attr_accessor :name
-	# 読み取り専用
+  # 読み取り専用
   # attr_reader :name
   # 書き込み専用
-	# attr_writer :name
+  # attr_writer :name
 
   def initialize(name, price)
     @name = name
