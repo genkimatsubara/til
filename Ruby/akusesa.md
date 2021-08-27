@@ -31,7 +31,7 @@ class Shoes
 end
 
 # インスタンスの作成
-shoes= Shoes.new("NIKE", 10000)
+shoes = Shoes.new("NIKE", 10000)
 shoes.brand
 # 読み書き両方
 shoes.name = 'adidas'
