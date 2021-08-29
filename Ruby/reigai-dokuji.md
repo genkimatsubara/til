@@ -3,19 +3,34 @@
 例外クラスを定義する場合は特別な理由がない限り、`StandardError`クラスか、そのサブクラスを継承する。(Exceptionクラスは直接継承しないようにする。)
 ### 構文
 ```
-class # 独自のエラー名 <  StandardError
-  # 実行処理
+class NoSignal < StandardError
+  attr_reader :signal
+
+  def initialize(message, signal)
+    @signal = signal
+    super("#{message} #{signal}")
+  end
 end
-```
-```
-class MyError < StandardError; end
+
+def action(signal)
+  case signal
+  when :red
+    "Stop"
+  when :blue
+    "Go"
+  when :yellow
+    "caution"
+  else
+    raise NoSignal.new("間違ったなシグナルです", signal)
+  end
+end
 
 begin
-  if x == 3
-    raise MyError
-  end
-  p 100 / x
-rescue MyError
-  puts "not 3!"
+  action(:pink)
+rescue NoSignal => e
+  p e.class
+  p e.message
+  p e.signal
 end
 ```
+
